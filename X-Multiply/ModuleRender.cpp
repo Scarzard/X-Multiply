@@ -34,7 +34,7 @@ bool ModuleRender::Init()
 
 	// TODO 9: load a texture "test.png" to test is everything works well
 
-	tex = App->textures->Load("test.png");
+	tex = App->textures->Load("LV1_Background1.png");
 
 	return ret;
 }
@@ -42,24 +42,39 @@ bool ModuleRender::Init()
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
-	// TODO 7: Clear the screen to black before starting every frame
+	
+	rectangle = new SDL_Rect{ 0,0, 512, 512 };
+	Blit(tex, 0, -128, rectangle);
 
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderClear(renderer);
+	rectangle2 = new SDL_Rect{ 0,0, 512, 512 };
+	Blit(tex, 513, -128, rectangle2);
 
-	// TODO 10: Blit our test texture to check functionality
 
-	rectangle = new SDL_Rect{ 0,0, 600, 400 };
-	Blit(tex, 0, 0, rectangle);
 
 	return update_status::UPDATE_CONTINUE;
 }
 
+
 update_status ModuleRender::PostUpdate()
 {
-	// TODO 8: Switch buffers so we actually render
+	
+	/*	rectangle->x -= 10;
+		rectangle2->x -= 10;
 
-	SDL_RenderPresent(renderer);
+		if (rectangle2->x == 0)
+		{
+			rectangle->x == 513;
+		}
+
+		if (rectangle->x == 0)
+		{
+			rectangle2->x == 513;
+		}
+		*/
+		SDL_RenderPresent(renderer);
+	
+
+	
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -15,6 +15,7 @@ public:
 
 	bool Init();
 	update_status PostUpdate();
+	
 	update_status PreUpdate();
 	bool CleanUp();
 
@@ -24,6 +25,7 @@ public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Texture* tex;
 	SDL_Rect* rectangle;
+	SDL_Rect* rectangle2;
 };
 
 #endif //__ModuleRenderer_H__
